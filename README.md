@@ -1,4 +1,4 @@
-My Student Repository 🎓
+My Code Studies Repository 🎓
 
 ## Description
 
