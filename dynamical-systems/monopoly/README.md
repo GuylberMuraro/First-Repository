@@ -1,33 +1,29 @@
-# My Code Studies Repository 🎓
+# Monopoly Game
+
+A study of game dynamics and economic systems using agent-based modeling and dynamical systems theory.
 
 ## Description
 
-This repository contains the code and projects developed during my studies in Computer Science and Physics disciplines, with a focus on Dynamical Systems and Computational Neuroscience.
+This project simulates and analyzes the classic Monopoly board game, exploring how economic interactions, market dynamics, and strategic decision-making emerge in competitive multi-agent systems.
 
-## Content
+## Project Structure
 
-The repository is organized in folders by subject:
+### Current Implementation
 
-- **Dynamical Systems** - Algorithms and simulations of dynamical systems, with applications to computational modeling and neuroscience
-- **Computational Neuroscience** - Applications of computational methods to neuroscience problems and neural modeling
-- **Games** - Game projects developed as part of the coursework and learning experiences
-- **Electronics & Automation** - Projects involving electronics, automation, and embedded systems
+- `src/main.py` - Main entry point and game controller
+- `src/section-1.py`, `section-2.py`, `section-3.py` - **Legacy code** (historical implementation - to be refactored)
 
-## How to use
+### Planned Development
 
-Each folder contains its respective code and documentation. Consult the individual READMEs within each folder for more details about each project.
+- **Python (OOP version)** - Refactored with object-oriented design using functions and methods for better code organization and maintainability
+- **C/C++ version** - Low-level implementation for performance-critical components
 
-## Technologies used
+## Technologies
 
 - Python
-- C++
-- GDScript
-- Git & Version Control
+- C/C++ (planned)
 
-## Contact
+## Development Status
 
-Feel free to reach out to me for questions or suggestions about the projects!
+🔄 In active refactoring - gradually restructuring legacy code into modern, clean implementations.
 
----
-
-*Last updated: 2026*
