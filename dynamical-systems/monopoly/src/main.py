@@ -2,14 +2,73 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-#np.random.seed(1)
 
 #parameters
 Nb = 40 #board number
 board = np.zeros(Nb) #board {we can change it later, choosing it into a function}
 
-#print(f'test\n{board}')#test
-#print(len(board))
+
+#functions
+def die(n):  #this is the die
+    return np.random.randint(1,n+1)
+
+def count(list, number): # find a number in a list (we can improve it making it searching for more numbers)
+    c = 0
+    for i in list:
+        if i == number:
+            c += 1
+        else:
+            pass
+    return c
+
+def next_step(position): # periodic boundery condition (old school)
+    d = die(6)
+    position = position + d
+    if position > Nb:
+        position = position - Nb
+    else:
+        pass
+    return position, d
+
+def simple_probability(number, list):  #calculate the probability
+    x = count(list, number)
+    P = x/(len(list))
+    return P
+
+#initial conditions
+Nq = 1  # first position
+Ninf = int(1e6)  #number of loop steps
+Nchance = 1
+list_die = []  # list of thrown dice
+list_position = []  # list of ocuupied positions
+
+
+#simulations
+for i in range(Ninf):
+    Nq, dice = next_step(Nq)  # throw the die and change position
+    board[Nq-1] += 1  # accumulate in array
+    list_die.append(dice)  # save die number
+    list_position.append(Nq)  #save position number
+
+#exports
+bins = np.arange(1,42)  # creating bins
+plt.hist(list_position,bins, density=True, histtype='bar', rwidth=0.9)  # making the histogram
+plt.axis([1,41,0,0.05])  #  delimitering boundary
+plt.show()
+
+
+'''------------------------'''
+'''Let's add a prison here!'''
+'''------------------------'''
+
+#imports
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#parameters
+Nb = 40 #board number
+board = np.zeros(Nb) #board {we can change it later, choosing it into a function}
 
 #functions
 def die(n):
@@ -39,44 +98,24 @@ def simple_probability(number, list):
     return P
 
 #initial conditions
-Nq = 0
-Ngames = int(1e9/2)
+Nq = 1
+Ninf = int(1e6)  #number of steps
 Nchance = 1
 list_die = []
 list_position = []
 
-#print(f'Testing next step:{next_step(Npl)}')
-
 #simulations
+for i in range(Ninf):
+    Nq, dice = next_step(Nq)
+    if Nq == 30:
+      Nq = 10
+    board[Nq-1] += 1
+    list_die.append(dice)
+    list_position.append(Nq)
 
-for i in range(Ngames):
-    Npl = 1
-    position = Nq
-    while position <= 40:
-        list_position.append(position)
-        d = die(6)
-        position = position + d
-        if position == 30:
-            position = 10
-        list_die.append(d)
-    print((i/Ngames)*100)
-        
-    #print(f'Game {i+1}')
-    #print(f'Field landed:{list_position}\nNumber thrown on the dice:{list_die}\nNumber of throws:{len(list_die)}')
-    #print(f'Probability of falling {Nchance}: {100*simple_probability(Nchance,list_die):.1f}%')
-print(list_position)
-print('-+-+'*25)
-print(list_die)
 
 #exports
-
-tables = []
-#for i in range(Ngames):
-    #tables.append(pd.DataFrame({'Thrown Dice':list_die, 'Landed Position':list_position}))
-
-
-#print(tables[1])
-
-plt.hist(list_position,bins=range(42))
-plt.axis([1,41,0,10000000000000000])
+bins = np.arange(1,42)
+plt.hist(list_position,bins, density=True, histtype='bar', rwidth=0.9)
+plt.axis([1,41,0,0.06])
 plt.show()
