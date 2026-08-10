@@ -51,7 +51,7 @@ def animate(i):
     ydata.append(y) 
     line.set_data(xdata, ydata) 
     
-    return line, 
+    return line,
 
 # calling the animation function     
 anim = animation.FuncAnimation(fig, animate, 
