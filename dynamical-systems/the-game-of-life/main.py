@@ -29,15 +29,9 @@ def neighbors(array): #counting neighbers
             else:                                                   #[dead] --> [dead]
                 array[i,j] = 0
     return kn
-            
-            
-
-#Simulation
-
-print(f'{array}\n\n')
 
 
-#export 
+#Simulation and export
 fig, ax = plt.subplots()
 im = ax.imshow(array, cmap='binary')
 
