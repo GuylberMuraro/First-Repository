@@ -1,0 +1,118 @@
+================================================================================
+                           GLOSSÁRIO DE FUNÇÕES - ML
+================================================================================
+
+1. PANDAS – Carregar e Inspecionar
+--------------------------------------------------------------------------------
+pd.read_csv("arquivo.csv")
+    Lê um arquivo CSV e cria um DataFrame.
+    Parâmetros: thousands (separador de milhar), delimiter (delimitador),
+                encoding (codificação)
+
+DataFrame()
+    Cria um DataFrame vazio (geralmente você recebe do read_csv).
+
+
+2. PANDAS – Explorar Dados
+--------------------------------------------------------------------------------
+df.head(n=5)
+    Mostra as primeiras n linhas.
+    Parâmetros: n (número de linhas)
+
+df.info()
+    Mostra tipos das colunas, contagem de não-nulos e memória.
+
+df.value_counts()
+    Conta frequência de cada valor único em uma coluna.
+
+df.describe()
+    Estatísticas descritivas (média, std, min, quartis, max).
+    Parâmetros: percentiles (lista de percentis)
+
+df.corr()
+    Matriz de correlação de Pearson entre colunas numéricas.
+    Parâmetros: method (pearson, kendall, spearman)
+
+df.median()
+    Mediana de cada coluna.
+    Parâmetros: axis (0 colunas, 1 linhas), skipna (ignorar NaN)
+
+df.mean()
+    Média de cada coluna.
+    Parâmetros: axis, skipna
+
+df.std()
+    Desvio padrão de cada coluna.
+    Parâmetros: axis, skipna, ddof (graus de liberdade)
+
+df.var()
+    Variância de cada coluna.
+    Parâmetros: axis, skipna, ddof
+
+
+3. PANDAS – Limpeza e Seleção
+--------------------------------------------------------------------------------
+df.drop(labels, axis)
+    Remove linhas (axis=0) ou colunas (axis=1).
+    Parâmetros: labels (nome ou índice), axis (0 ou 1), inplace
+
+df.dropna()
+    Remove linhas com qualquer valor faltante.
+    Parâmetros: subset (colunas específicas), inplace
+
+df.fillna(value)
+    Substitui NaN por value.
+    Parâmetros: value (valor fixo), inplace, method (ffill, bfill)
+
+
+4. PANDAS – Transformação e Criação
+--------------------------------------------------------------------------------
+df.sort_values(by)
+    Ordena o DataFrame por uma ou mais colunas.
+    Parâmetros: by (coluna ou lista), ascending (True/False), inplace
+
+pd.cut(x, bins, labels)
+    Divide dados contínuos em categorias (estratos).
+    Parâmetros: x (array), bins (limites), labels (rótulos), right
+
+
+5. VISUALIZAÇÃO – pandas.plotting e matplotlib.pyplot
+--------------------------------------------------------------------------------
+df.hist(bins, figsize)
+    Plota histogramas de todas as colunas numéricas.
+    Parâmetros: bins (número de barras), figsize (largura, altura)
+
+scatter_matrix(df, figsize)
+    Plota gráficos de dispersão entre pares de colunas.
+    Parâmetros: figsize, alpha (transparência), diagonal (histograma/kde)
+
+plt.show()
+    Exibe os gráficos (necessário fora do Jupyter).
+
+
+6. SCIKIT-LEARN – Estimadores e Transformadores
+--------------------------------------------------------------------------------
+SimpleImputer(strategy)
+    Substitui valores faltantes por uma estatística.
+    Parâmetros: strategy ("mean", "median", "most_frequent", "constant"),
+                fill_value (se strategy="constant")
+
+.fit(X, y=None)
+    Treina o estimador (calcula parâmetros).
+    Parâmetros: X (dados), y (labels, se supervisionado)
+
+.transform(X)
+    Aplica a transformação aos dados.
+    Parâmetros: X (dados)
+
+.fit_transform(X, y=None)
+    Faz fit + transform de uma vez.
+    Parâmetros: X, y
+
+.statistics_
+    Atributo que armazena os parâmetros aprendidos (ex: medianas).
+
+.values
+    Atributo do DataFrame que retorna os dados como NumPy array.
+
+================================================================================

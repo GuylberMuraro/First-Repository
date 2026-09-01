@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pylab as plt
+import time
 
 a = [0,1]
 N = 8
@@ -20,7 +21,7 @@ print(x)
 
 plt.hist(y, bins = 50, density=True)
 plt.show()
-'''
+
 
 import matplotlib.animation as animation
 
@@ -62,3 +63,30 @@ anim = animation.FuncAnimation(fig, animate,
 
 # saves the animation in our desktop 
 anim.save('growingCoil.mp4', writer = 'ffmpeg', fps = 30) 
+'''
+N = 100000
+f = lambda x: (np.sin(1/x))
+
+X = np.linspace(0,6*np.pi, 100)
+y = np.zeros(N+1)
+
+g = lambda x, n: 2 * (-1)**(n+1) * np.sin(n * x)
+
+inicio = time.time()
+
+listY = []
+for x in X:
+    y[0] = 0
+    for i in range(N):
+        y[i+1] = y[i] + g(x, i)
+    listY.append(y[-1])
+
+print(len(listY), len(X))
+
+fim = time.time()
+
+print(fim-inicio)
+plt.plot(X, listY)
+plt.plot(X, X)
+plt.grid()
+plt.show()
